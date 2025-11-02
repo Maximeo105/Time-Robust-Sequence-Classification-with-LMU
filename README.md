@@ -1,22 +1,32 @@
 # Time-Robust-Sequence-Classification-with-LMU
 
-Inter-event interval + content; LMU vs LSTM baseline
+##Overview
 
-Goal : Compare a continuous-time Legendre Memory Unit (LMU) againts an LSTM on a 48-class task where labels depend on both event content and inter-event intervals.
+This project compares a Legendre Memory Units (LMU) againts a LSTM on a temporal sequence classification task where labels depend on both event content (images) and inter-event timing intervals (on the order of seconds) 
 
-We test:
+key contribution : LMUs process continuous-time inputs accurately with small datasets and remain stable under change to timing discretization (dt), whereas LSTMs are less accurate and doesn't remain stable under different dt. 
+This can help model better predict where to direct their attention or interpret inputs based real word timing. 
 
-1. Convergence speed (number of epochs needed to reach a low val loss)
-2. Generalization to different sampling (train on one frame duration range, evaluate on a shifted range with the same total lenght)
+##Motivation
 
-Highlights:
-Synthetic dataset with controlled gaps (gap\_a, gap\_b, gap\_c) and fixed event order.
-Variable frame durations \[dt\_min, dt\_max]; total frames vary per sequence but not the total duration
-Two models use the same per-step CNN features; LSTM addionally gets fed the cumulative time
+Standard RNNs (including LSTMs) struggle with irregular sampling because they assume fixed timesteps. LMUs, based on the Legendre Delay Network, naturally handle variable dt through continuous-time state updates. 
+
+##Task
+-**Input**: Sequence of images (circles/squares) separated by variable gaps of time
+-**Output**: 48-class classification based on gap durations (binned into ranges)
+-**Challenge**: Models must integrate elapsed time, not just frame count
+
+##Results
+-LMU maintains accuracy across different sampling rates (5-20 Hz -> 2.5-10 Hz, 10-40 Hz) where the LSTM accuracy drops significantly under the same shifts. 
+-LMU optimal accuracy is reached with fewer epochs compared to the LSTM
+-LMU accuracy is better than the LSTM on both sample size (250-500) holding around 60% accuracy on both size, whereas the LSTM is around 20% and 40% for each setting respectively. 
 
 
+This prototype was developed with assistance from generative AI for rapid prototyping. 
+Core algorithms and experimental design are orignal work. 
 
+##References
+- Voelker & Eliasmtih (2018). *Legendre Memory Units*
 
-
-This prototype was developed with assistance from generative AI
-
+##Related Work
+This self-directed project builds on my honours thesis work on temporal sequence encoding with Bidirectional Associative Memory (Ouimet, 2024). 
