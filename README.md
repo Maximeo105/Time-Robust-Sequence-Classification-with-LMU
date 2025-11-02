@@ -5,7 +5,7 @@
 This project compares a Legendre Memory Units (LMU) againts a LSTM on a temporal sequence classification task where labels depend on both event content (images) and inter-event timing intervals (on the order of seconds) 
 
 key contribution : LMUs process continuous-time inputs accurately with small datasets and remain stable under change to timing discretization (dt), whereas LSTMs are less accurate and doesn't remain stable under different dt. 
-This can help artificial intelligence agents to better predict where to direct their attention or interpret inputs based real word timing. 
+This can help artificial intelligence agents to better predict where to direct their attention or interpret inputs based of real word timing. 
 
 ## Motivation
 
