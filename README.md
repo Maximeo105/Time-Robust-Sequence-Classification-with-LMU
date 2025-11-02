@@ -28,5 +28,5 @@ Core algorithms and experimental design are orignal work.
 ## References
 - Voelker & Eliasmtih (2018). *Legendre Memory Units*
 
-##Related Work
+## Related Work
 This self-directed project builds on my honours thesis work on temporal sequence encoding with Bidirectional Associative Memory (Ouimet, 2024). 
