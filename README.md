@@ -9,7 +9,14 @@ This can help artificial intelligence agents to better predict where to direct t
 
 ## Motivation
 
-Standard RNNs (including LSTMs) struggle with irregular sampling because they assume fixed timesteps. LMUs, based on the Legendre Delay Network, naturally handle variable dt through continuous-time state updates. 
+The human brain doesn't rely on constant, regular inputs; yet it effortlessly processes timing information across wildly varying conditions: 
+- Robustness to sampling changes: A gamer whose FPS drops from 60 to 45 doesn't suddenly lose the ability to play. Their brain adapts to the new temporal resolution without catastrophic performance loss.
+- Timing as contextual information: When someone knocks on your door, the interval pattern alone can tell you whether it's the familiar mailman or an unknown visitor; no visual information needed.
+- Timing for predictive action: Catching a football doesn't require tracking the ball every millisecond. You estimate timing, look away, reposition and readjust; integrating sparse temporal samples into fluid actions.
+- Learned temporal models: In competitive games, players internalize opponent behavior patterns. A shooter player might know they have about 2 seconds before an enemy re-peeks a corner, allowing strategic repositioning based purely on learned timing.
+  
+Standard RNNs (including LSTMs) struggle with irregular sampling because they assume fixed timesteps. LMUs, based on the Legendre Delay Network, naturally handle variable dt through continuous-time state updates more closely matching how biological systems process time.
+Thus, we test the ability of such network to distinguish inputs based only on timing informations. 
 
 ## Task
 - **Input**: Sequence of images (circles/squares) separated by variable gaps of time
@@ -23,10 +30,10 @@ Standard RNNs (including LSTMs) struggle with irregular sampling because they as
 
 
 This prototype was developed with assistance from generative AI for rapid prototyping. 
-Core algorithms and experimental design are orignal work. 
+Core algorithms and experimental design are original work. 
 
 ## References
-- Voelker & Eliasmtih (2018). *Legendre Memory Units*
+- Voelker & Eliasmith (2018). *Legendre Memory Units*
 
 ## Related Work
 This self-directed project builds on my honours thesis work on temporal sequence encoding with Bidirectional Associative Memory, completed under the supervision of Sylvain Chartier. 
